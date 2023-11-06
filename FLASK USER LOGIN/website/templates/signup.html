@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+    <title>Sign-up</title>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                 {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+        {% block body %}{% endblock %}
+        <div class = "container"></div>
+        <div class="container">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+            <!-- Rest of your HTML -->
+        </div>
+        
+        <div class="signup-form">
+            <h2>Sign Up</h2>
+            <form method="post" onsubmit="handleForm">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name= "firstName" placeholder="enter your first name" required>
+                </div>
+                <div class="form-group">
+                    <label for "lastName">Last Name:</label>
+                    <input type="text" name= "lastName" id="lastName" placeholder="enter your lastname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Emaila address:</label>
+                    <input type="email" id="email" name= "email" placeholder="enter your email for signup" required>
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password:</label>
+                    <input type="password" id="password1" name="password1" placeholder="enter an strong password" required>
+                </div>
+                <div class="form-group">
+                    <label for="password2">Re-enter Password:</label>
+                    <input type="password" id="password2" name="password2" placeholder="Confirm your Password "required>
+                </div>
+                <div class="form-group">
+                    <button class="signup-button" type="submit">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+function handleForm(e) {
+     e.preventDefault();
+
+    //rest of the code
+}
+
+
+</script>

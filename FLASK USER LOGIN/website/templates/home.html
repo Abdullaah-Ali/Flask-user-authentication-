@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}To-Do App{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='todo.css') }}">
+
+    <h1>To-Do List</h1>
+    <div class="task-section">
+        <form method="POST">
+            <input type="text" name="addtask" placeholder="Enter a new task" required>
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+    
+    
+    <div class="task-section">
+        <form action = "/deletetask" method="POST">
+            <input type="text" name="deletetask" placeholder="Enter a task to delete">
+            <input type="submit" value="Delete Task">
+        </form>
+        <form  action ="/alltasldelete"method="POST">
+            <input type="submit" name="deletealltask" value="Delete All">
+        </form>
+    </div>
+
+
+    <h2>All Tasks</h2>
+    <ul class="task-list">
+        {% for note in notes %}
+        <li>
+            <input type="checkbox" id="note{{ note.id }}" name="note{{ note.id }}" {% if note.completed %}checked{% endif %}>
+            <label for="note{{ note.id }}">{{ note.text }}</label>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
